@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymnet-demo
+  labels:
+    project: roboshop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+      environment: dev
+  template:
+    metadata:
+      name: web
+      labels:
+        app: web
+        environment: dev
+    spec:
+      conatiners:
+      - name: web
+        image: nginx
+        ports:
+        - name: http-web
+          containerPort: 80
+        resources:
+          requests:
+            cpu: "126m"
+            memory: "256Mi"
+          limits:
+            cpu: "256m"
+            memory: "512Mi"
