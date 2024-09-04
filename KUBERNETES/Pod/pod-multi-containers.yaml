@@ -8,10 +8,10 @@ spec:
     image: nginx
     ports:
     - name: https
-      containerPort: 443
+      containerPort: 80
   - name: web2
     image: almalinux:8
-    command: ["sleep" "95"]
+    command: ["sleep", "95"]
     ports:
     - name: http
       containerPort: 80
