@@ -1,4 +1,4 @@
-FROM node:14.21.3-alphine3.17
+FROM node:14.18.2-alpine
 RUN addgroup -S roboshop && adduser -S catalogue roboshop
 WORKDIR /app
 RUN chown -R roboshop:catalogue /app
