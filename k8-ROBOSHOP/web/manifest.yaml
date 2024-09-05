@@ -135,10 +135,10 @@ spec:
   selector:
     app: web
     environment: dev
-    ports:
-    - name: web-service-port
-      port: 80
-      protocol: TCP
-      targetPort: web-port
+  ports:
+  - name: web-service-port
+    port: 80
+    protocol: TCP
+    targetPort: web-port
 
 
