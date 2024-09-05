@@ -95,3 +95,29 @@ data:
     }
 
     }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: web
+  lables:
+    project: roboshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: web
+        environment: dev
+    spec:
+      containers:
+      - name: web
+        image: venkat1095/web:v1
+        ports: 
+        - name: web-port
+          containerPort: 80
+          
