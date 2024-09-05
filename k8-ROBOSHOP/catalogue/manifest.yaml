@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels:
+    project: roboshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalogue
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: catalogue
+        environment: dev
+    spec:
+      containers:
+      - name: catalogue
+        image: venkat1095/catalogue:v1
+        envFrom:
+        - configMapRef:
+            name: catalogue-configmap
+        ports:
+        - name: catalogue-port
+          containerPort: 8080
+---
+apiVersion: v1
+kind: service
+metadata:
+  name: catalogue-service
+  namespace: roboshop
+  labels:
+    project: roboshop
+spec:
+  type: ClusterIP
+  selector:
+    app: catalogue
+    environment: dev
+  ports:
+  - name: catalogue-service-port
+    port: 8080
+    protocol: TCP
+    targetPort: catalogue-port
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogue-configmap
+  namespace: roboshop
+  labels:
+    project: roboshop
+data:
+  MONGO: true
+    
