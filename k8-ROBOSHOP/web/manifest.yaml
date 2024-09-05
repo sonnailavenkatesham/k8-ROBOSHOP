@@ -102,6 +102,7 @@ metadata:
   name: web
   lables:
     project: roboshop
+    namespace: roboshop
 spec:
   replicas: 1
   selector:
@@ -120,4 +121,4 @@ spec:
         ports: 
         - name: web-port
           containerPort: 80
-          
+
