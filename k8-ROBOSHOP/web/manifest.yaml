@@ -116,12 +116,28 @@ spec:
         app: web
         environment: dev
     spec:
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx
+          items:
+          - key: nginx.conf
+            path: nginx.conf
       containers:
-      - name: web
+      - name: catalogue
         image: venkat1095/web:v1
-        ports: 
-        - name: web-port
-          containerPort: 80
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "68Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        volumeMounts:
+        - name: nginx-conf # name of the volume you created above
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+          readOnly: true
 ---
 apiVersion: v1
 kind: Service
