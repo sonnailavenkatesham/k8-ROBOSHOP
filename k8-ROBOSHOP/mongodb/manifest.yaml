@@ -32,7 +32,7 @@ metadata:
   labels:
     project: roboshop
 spec:
-  type: clusterIp
+  type: clusterIP
   selector:
     app: mongodb
     environment: dev
