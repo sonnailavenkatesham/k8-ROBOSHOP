@@ -53,5 +53,5 @@ metadata:
   labels:
     project: roboshop
 data:
-  MONGO: true
+  MONGO: "true"
     
