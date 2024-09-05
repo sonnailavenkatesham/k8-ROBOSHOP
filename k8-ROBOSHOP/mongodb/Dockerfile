@@ -1,2 +1,2 @@
-FROM mongodb
+FROM mongo
 ADD *.js /docker-entrypoint-initdb.d/*.js
