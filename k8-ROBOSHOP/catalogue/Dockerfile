@@ -1,5 +1,5 @@
 FROM node:14
-RUN addgroup -S roboshop && adduser -S catalogue roboshop
+RUN addgroup -S roboshop && adduser -S roboshop catalogue
 WORKDIR /app
 RUN chown -R roboshop:catalogue /app
 USER /app
