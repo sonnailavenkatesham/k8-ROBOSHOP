@@ -100,7 +100,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: web
-  lables:
+  labels:
     project: roboshop
     namespace: roboshop
 spec:
